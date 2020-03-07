@@ -174,13 +174,11 @@ Return<void> Power::getSubsystemLowPowerStats(getSubsystemLowPowerStats_cb _hidl
     //We currently have only one Subsystem for WLAN
     ret = get_wlan_low_power_stats(subsystems[subsystem_type::SUBSYSTEM_WLAN]);
     if (ret != 0) {
-        goto done;
+           _hidl_cb(subsystems, Status::SUCCESS);
     }
 
     //Add query for other subsystems here
 
-done:
-    _hidl_cb(subsystems, Status::SUCCESS);
     return Void();
 }
 
